@@ -57,6 +57,8 @@ myContent.append(button);
 // });
 
 const buttonClickHandler = (event) =>{
+    // Stop the default listener form taking over
+    event.preventdefault();
     console.log(event.target.innerText);
     alert('Button worked!');
     // get a reference to the First div box
@@ -65,7 +67,15 @@ const divbox1= document.getElementById('div-01');
 divbox1.remove();
 };
 
-button.addEventListener('click', buttonClickHandler);
+// button.addEventListener('click', buttonClickHandler);
+// const contactForm = document'
+
+
+document.querySelector(); // returns the selected elements
+document.querySelectorAll(); // returns all the elements
+
+// references for the selectors:
+// https://www.w3schools.com/cssref/css_selectors.php
 
 
 
