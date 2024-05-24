@@ -2,12 +2,12 @@
   "name": "inft-2202-ice",
   "version": "1.0.0",
   "description": "IN CLASS EXERCISES",
-  "main": "index.js",
+  "type": "module",
+  "main": "server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
     "url": "git+https://github.com/Aasif1405/inft-2202-ice.git"
   },
   "author": "Mohammed Aasif Mohammed Sadhak",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/Aasif1405/inft-2202-ice/issues"
   },
-  "homepage": "https://github.com/Aasif1405/inft-2202-ice#readme"
+  "homepage": "https://github.com/Aasif1405/inft-2202-ice#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
