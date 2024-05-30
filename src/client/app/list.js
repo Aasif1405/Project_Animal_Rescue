@@ -1,3 +1,5 @@
+// I have to make it work functionally and I was not feeling well from couple of day I need some time to complete it make it.
+
 import { getAnimals, saveAnimal, findAnimal, updateAnimal } from "./animal.service.js";
 
 console.log(getAnimals());
@@ -165,3 +167,137 @@ function validateAnimalForm(form) {
     // Return if the form is valid or not
     return valid;
 }
+ 
+
+import { getAnimals, deleteAnimalService } from './animals.service.js';
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const messageBox = document.createElement('div');
+    messageBox.id = 'message-box';
+    document.body.appendChild(messageBox);
+    
+    const animalTable = document.getElementById('animals-list');
+    const animalTableBody = animalTable.querySelector('tbody');
+
+    try {
+        const animals = getAnimals();
+
+        if (animals.length === 0) {
+            messageBox.style.display = 'block';
+            messageBox.textContent = 'No animals found.';
+            animalTable.style.display = 'none';
+        } else {
+            messageBox.style.display = 'none';
+            animalTable.style.display = 'table';
+            drawAnimalTable(animals);
+        }
+    } catch (error) {
+        console.error('Error fetching animals:', error);
+        messageBox.textContent = 'Error fetching animals. Please try again later.';
+        messageBox.style.display = 'block';
+    }
+});
+
+function drawAnimalTable(animals) {
+    const animalTableBody = document.querySelector('#animals-list tbody');
+    animalTableBody.innerHTML = '';
+
+    animals.forEach(animal => {
+        const row = animalTableBody.insertRow();
+
+        Object.values(animal).forEach(value => {
+            const cell = row.insertCell();
+            cell.textContent = value;
+        });
+
+        const actionCell = row.insertCell();
+        addEditButton(actionCell, animal);
+        addDeleteButton(actionCell, animal);
+    });
+}
+
+function addEditButton(cell, animal) {
+    const editButton = document.createElement('a');
+    editButton.classList.add('btn', 'btn-primary', 'me-2');
+    editButton.href = `add.html?name=${encodeURIComponent(animal.name)}`;
+    editButton.innerHTML = '<i class="fas fa-edit"></i> Edit';
+    cell.appendChild(editButton);
+}
+
+function addDeleteButton(cell, animal) {
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('btn', 'btn-danger');
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
+    deleteButton.addEventListener('click', () => {
+        deleteAnimal(animal.name);
+    });
+    cell.appendChild(deleteButton);
+}
+
+async function deleteAnimal(animalName) {
+    try {
+        deleteAnimalService(animalName);
+        location.reload();
+    } catch (error) {
+        console.error('Error deleting animal:', error);
+        alert('Failed to delete the animal. Please try again.');
+    }
+}
+
+
+
+// // Class code 
+// import{ getAnimals, saveAnimal  } from "./animal.service";
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const animals = getAnimals();
+//     drawAnimalsTable(animals);
+// });
+ 
+
+// function drawAnimalsTable(animals) {
+//     const tableBody = document.querySelector('table tbody');
+   
+   
+ 
+//     animals.forEach(animal => {
+   
+//     const row = tableBody.insertRow();
+   
+//     const nameCell = row.insertCell();
+//     nameCell.textContent = animal.animalName;
+ 
+//     const breedCell = row.insertCell();
+//     breedCell.textContent = animal.animalBreed;
+ 
+//     const eyesCell = row.insertCell();
+//     eyesCell.textContent = animal.animalEyes;
+ 
+//     const legsCell = row.insertCell();
+//     legsCell.textContent = animal.animalLegs;
+ 
+//     const soundCell = row.insertCell();
+//     soundCell.textContent = animal.animalSound;
+ 
+//     //Delete Button
+//     const deleteCell = row.insertCell();
+//     const deleteButton = document.createElement('button');
+//     deleteButton.textContent = 'Delete';
+//     deleteButton.className = 'btn btn-danger btn-sm';
+//     deleteButton.addEventListener('click', function() {
+//         deleteAnimal(animal.animalName);
+//     });
+//     deleteCell.appendChild(deleteButton);
+ 
+//     //Edit Button
+//     const editCell = row.insertCell();
+//     const editButton = document.createElement('button');
+//     editButton.textContent = 'Edit';
+//     editButton.className = 'btn btn-primary btn-sm';
+//     editButton.addEventListener('click', function() {
+//         updateAnimal(animal.animalName);
+//     });
+//     editCell.appendChild(editButton);
+ 
+//     });
+// }

@@ -3,7 +3,7 @@
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
-    <title>Add Page</title>
+    <title>Add/Edit Animal</title>
 
     <!-- External CSS files -->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="contact.html"> <i class="fas fa-contact"></i> Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="list.html"> <i class="fas fa-list"></i> List</a>
+                        <a class="nav-link" href="list.html"> <i class="fas fa-list"></i> Animal List</a>
                     </li>
                 </ul>
             </div>
@@ -47,30 +47,30 @@
     <div class="container">
         <h1>Add a New Animal</h1>
         <div class="row justify-content-lg-center">
-            <form id="animalForm" class="col-lg-6 col-md-4 col-sm-4">
+            <form id="animal-form" class="col-lg-6 col-md-4 col-sm-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Animal Name</span>
-                    <input type="text" class="form-control" id="name" required>
+                    <input type="text" class="form-control" id="name" name="name" required>
                     <p class="text-danger d-none">This is where the error message will go.</p>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Breed</span>
-                    <input type="text" class="form-control" id="breed" required>
+                    <input type="text" class="form-control" id="breed" name="breed" required>
                     <p class="text-danger d-none">This is where the error message will go.</p>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Number of Legs</span>
-                    <input type="number" class="form-control" id="legs" required>
+                    <input type="number" class="form-control" id="legs" name="legs" required>
                     <p class="text-danger d-none">This is where the error message will go.</p>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Number of Eyes</span>
-                    <input type="number" class="form-control" id="eyes" required>
+                    <input type="number" class="form-control" id="eyes" name="eyes" required>
                     <p class="text-danger d-none">This is where the error message will go.</p>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Sound</span>
-                    <input type="text" class="form-control" id="sound" required>
+                    <input type="text" class="form-control" id="sound" name="sound" required>
                     <p class="text-danger d-none">This is where the error message will go.</p>
                 </div>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i> Save Animal</button>
@@ -90,8 +90,8 @@
 
 <!-- Scripting Section -->
 <script src="../../node_modules/bootstrap/js/index.esm.js"></script>
-<script type="module"></script>
-<script src="app/add.js"></script>
+<script type="module" src="app/add.js"></script>
+<script type="module" src="app/edit.js"></script>
 
 </body>
 </html>

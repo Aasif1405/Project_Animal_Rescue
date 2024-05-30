@@ -3,7 +3,7 @@
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
-    <title>List Page</title>
+    <title>Animal List Page</title>
 
     <!-- External CSS files -->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
                         <a class="nav-link" href="contact.html"> <i class="fa-brands fa-contact"></i> Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="list.html"> <i class="fa-solid fa-list"></i> List</a>
+                        <a class="nav-link" href="list.html"> <i class="fa-solid fa-list"></i> Animal List</a>
                     </li>
                 </ul>
             </div>
@@ -47,24 +47,36 @@
     <video src="./img/beach.mp4" muted loop autoplay class="back_video"></video>
     <!-- Main Content -->
     <div class="container">
-        <h1>List</h1>
+        <h1>Animal List</h1>
+        <!-- Table for Animals List -->
+        <table id="animals-list" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Species</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
     </div>
 </main>
-
 
 <footer>
     <p class="mt-5 mb-3 text-muted text-center">
         <a href="./about.html" style="color: #f21515; text-decoration: underline;">About Us</a>
-
         <a> | </a>
         <a href="./contact.html" style="color: #f21515; text-decoration: underline;">Contact Us</a>
     </p>
-    <p class="mt-5 mb-3 text-muted text-center" >&copy; 2024  Mohammed Aasif, INC</p>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2024 Mohammed Aasif, INC</p>
 </footer>
 
 <!-- Scripting Section -->
 <script src="../../node_modules/bootstrap/js/index.esm.js"></script>
-<script src="./app/ice2.js"></script>
+<script type="module" src="./app/list.js"></script>
 
 </body>
 </html>
