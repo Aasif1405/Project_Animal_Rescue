@@ -1,11 +1,10 @@
 import { getAnimals, saveAnimal, findAnimal, updateAnimal } from "./animal.service.js";
 
+// Log the current list of animals and a message to ensure the script is running
 console.log(getAnimals());
-
-// To make sure the page is working correctly
 console.log('We are on the add page');
 
-// Check if there's a name parameter in the URL
+// Check if there's a name parameter in the URL (indicates editing an existing animal)
 const urlParams = new URLSearchParams(window.location.search);
 const animalName = urlParams.get('name');
 
@@ -61,6 +60,7 @@ function submitAnimalForm(event) {
         if (saved) {
             animalForm.reset();
             document.getElementById('animalError').textContent = '';
+            window.location.href = 'list.html'; // Redirect to the list page after saving
         } else {
             document.getElementById('animalError').textContent = 'Animal already exists.';
         }

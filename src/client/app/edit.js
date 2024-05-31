@@ -1,5 +1,5 @@
-import { findAnimal, updateAnimal } from './animals.service.js';
-import { validateAnimalForm } from './add.js'; // Reusing the validation method
+import { findAnimal, updateAnimal } from './animal.service.js';
+// import { validateAnimalForm } from './add.js'; // Reusing the validation method
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
