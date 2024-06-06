@@ -1,71 +1,112 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <!-- Metadata -->
-     <meta charset="UTF-8">
-     <title>Animal Shelter</title>
- 
-     <!-- External CSS files -->
-     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-     <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-     <link rel="stylesheet" href="./CSS/style.CSS">
- 
- </head>
- <body>
- <header>
-     <!-- Navigation Bar -->
-     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-         <div class="container-fluid">
-             <!-- Brand Logo -->
-             <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paw"></i> ANIMAL SHELTER</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <title>Animal Shelter</title>
 
-             <!-- Navigation Links -->
-             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                     <li class="nav-item">
-                         <a class="nav-link active" aria-current="page" href="index.html"> <i class="fas fa-home"></i> Home</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="about.html"> <i class="fa-solid fa-user-tie"></i> About</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="add.html"> <i class="fa-solid fa-add"></i> Add</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="contact.html"> <i class="fa-brands fa-contact"></i> Contact Us</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="list.html"> <i class="fa-solid fa-list"></i> Animal List</a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-     </nav>
- </header>
- <main class="container">
-     <!-- Background Video -->
-     <video src="./img/beach.mp4" muted loop autoplay class="back_video"></video>
-     <!-- Main Content -->
-     <div class="content">
-         <h1>Welcome to our Website</h1>
-     </div>
- </main>
- 
+    <!-- External CSS files -->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./CSS/style.css">
 
- <footer>
+</head>
+<body>
+<header>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html"><i class="fas fa-paw"></i> ANIMAL SHELTER</a>
+
+            <!-- Navigation Links -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html"> <i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"> <i class="fas fa-user-tie"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add.html"> <i class="fas fa-plus"></i> Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"> <i class="fas fa-envelope"></i> Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list.html"> <i class="fas fa-list"></i> Animal List</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="container">
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Welcome to our Website</h1>
+    </div>
+</main>
+
+
+<!-- Carousel Component -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./img/running-dog-750588.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Welcome to Animal Shelter</h5>
+                <p>Your new best friend is waiting for you.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/girl-5623231.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Adopt a Pet</h5>
+                <p>Find your perfect companion today.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./img/dog-3344414.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Support Us</h5>
+                <p>Help us provide the best care for our animals.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<footer>
     <p class="mt-5 mb-3 text-muted text-center">
         <a href="./about.html" style="color: #f21515; text-decoration: underline;">About Us</a>
-
-        <a> | </a>
+        <span> | </span>
         <a href="./contact.html" style="color: #f21515; text-decoration: underline;">Contact Us</a>
     </p>
-    <p class="mt-5 mb-3 text-muted text-center">&copy; 2024  Mohammed Aasif, INC</p>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2024 Mohammed Aasif, INC</p>
 </footer>
- 
- <!-- Scripting Section -->
- <script src="../../node_modules/bootstrap/js/index.esm.js"></script>
- <script src="./app/ice2.js"></script>
- 
- </body>
- </html>
- 
+
+<!-- Scripting Section -->
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

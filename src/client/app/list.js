@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Create and append a message box to the document body
     const messageBox = document.createElement('div');
     messageBox.id = 'message-box';
+    messageBox.className = 'alert alert-danger d-none';
     document.body.appendChild(messageBox);
 
-    // Get references to the animal table and its body
     const animalTable = document.getElementById('animals-list');
     const animalTableBody = animalTable.querySelector('tbody');
 
     try {
-        // Fetch the list of animals from storage
+        // Fetch the list of animals from storage that is from add.js
         const animals = getAnimals();
 
         if (animals.length === 0) {
@@ -23,81 +23,117 @@ document.addEventListener('DOMContentLoaded', async () => {
             // If animals are found, hide the message box and display the table
             messageBox.style.display = 'none';
             animalTable.style.display = 'table';
-            // Populate the table with animal data
-            drawAnimalTable(animals);
+            // renderTable helps to display the animal in the table after fetching 
+            renderTable(animals);
         }
     } catch (error) {
-        // Handle any errors that occur while fetching animals
+        // error handling when fetching the animal
         console.error('Error fetching animals:', error);
         messageBox.textContent = 'Error fetching animals. Please try again later.';
         messageBox.style.display = 'block';
     }
 });
 
-function drawAnimalTable(animals) {
-    // Get a reference to the table body and clear its contents
-    const animalTableBody = document.querySelector('#animals-list tbody');
-    animalTableBody.innerHTML = '';
+function renderTable(animals) {
+    const perPage = 5;
+    const totalPages = Math.ceil(animals.length / perPage);
+    let currentPage = 1;
 
-    // Loop through each animal and create a row in the table
-    animals.forEach(animal => {
-        const row = animalTableBody.insertRow();
+    function drawAnimalTable(page = 1) {
+        const start = (page - 1) * perPage;
+        const end = start + perPage;
+        const paginatedAnimals = animals.slice(start, end);
+        const animalTableBody = document.querySelector('#animals-list tbody');
+        animalTableBody.innerHTML = '';
 
-        // Insert cells for each property of the animal
-        Object.values(animal).forEach(value => {
-            const cell = row.insertCell();
-            cell.textContent = value;
+        paginatedAnimals.forEach(animal => {
+            const row = animalTableBody.insertRow();
+
+            Object.values(animal).forEach(value => {
+                const cell = row.insertCell();
+                cell.textContent = value;
+            });
+
+            const actionCell = row.insertCell();
+            addEditButton(actionCell, animal);
+            addDeleteButton(actionCell, animal);
         });
 
-        // Create a cell for action buttons (edit and delete)
-        const actionCell = row.insertCell();
-        addEditButton(actionCell, animal);
-        addDeleteButton(actionCell, animal);
-    });
+        //  tooltips for edit and delete button
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
 
-    // Check to see if there are still animals in the list
-    if (animals.length === 0) {
-        // If no animals are left, hide the table and show the message box
-        document.getElementById('message-box').classList.remove('d-none');
-        document.getElementById('animals-list').classList.add('d-none');
-    } else {
-        // If animals are present, show the table and hide the message box
-        document.getElementById('message-box').classList.add('d-none');
-        document.getElementById('animals-list').classList.remove('d-none');
+        renderPagination(page, totalPages);
     }
+
+    function renderPagination(currentPage, totalPages) {
+        const pagination = document.querySelector('.pagination');
+        pagination.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageItem = document.createElement('li');
+            pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+            const pageLink = document.createElement('a');
+            pageLink.className = 'page-link';
+            pageLink.href = '#';
+            pageLink.textContent = i;
+            pageLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = i;
+                drawAnimalTable(currentPage);
+            });
+            pageItem.appendChild(pageLink);
+            pagination.appendChild(pageItem);
+        }
+    }
+
+    drawAnimalTable(currentPage);
 }
 
 function addEditButton(cell, animal) {
-    // Create an edit button and set its properties
     const editButton = document.createElement('a');
     editButton.classList.add('btn', 'btn-primary', 'me-2');
     editButton.href = `add.html?name=${encodeURIComponent(animal.name)}`;
     editButton.innerHTML = '<i class="fas fa-edit"></i> Edit';
-    // Append the edit button to the cell
+    editButton.setAttribute('data-bs-toggle', 'tooltip');
+    editButton.setAttribute('data-bs-placement', 'top');
+    editButton.setAttribute('title', 'Edit this animal');
     cell.appendChild(editButton);
 }
 
 function addDeleteButton(cell, animal) {
-    // Create a delete button and set its properties
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('btn', 'btn-danger');
     deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
-    // Add an event listener to handle the delete action
-    deleteButton.addEventListener('click', async () => {
-        await deleteAnimal(animal.name);
-        location.reload(); // Reload the page after deletion
+    deleteButton.setAttribute('data-bs-toggle', 'tooltip');
+    deleteButton.setAttribute('data-bs-placement', 'top');
+    deleteButton.setAttribute('title', 'Delete this animal');
+    deleteButton.addEventListener('click', () => {
+        const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        const confirmButton = document.getElementById('confirmDelete');
+
+        confirmButton.onclick = async () => {
+            try {
+                await deleteAnimal(animal.name);
+                location.reload(); // Reload the page after deletion
+            } catch (error) {
+                console.error('Error deleting animal:', error);
+                alert('Failed to delete the animal. Please try again.');
+            }
+        };
+
+        modal.show();
     });
-    // Append the delete button to the cell
     cell.appendChild(deleteButton);
 }
-
+// This reload the page and bring to the current page after the the animal is get deleted- In case of pagination and delete model confirmation
 async function deleteAnimal(animalName) {
     try {
-        // Call the service to delete the animal by name
         await deleteAnimalService(animalName);
-        location.reload(); // Reload the page after successful deletion
+        location.reload(); 
     } catch (error) {
-        // Handle any errors that occur during deletion
         console.error('Error deleting animal:', error);
         alert('Failed to delete the animal. Please try again.');
     }

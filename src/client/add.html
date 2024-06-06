@@ -16,8 +16,11 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <!-- Brand logo -->
-            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-paw"></i> ANIMAL SHELTER</a>
+            <a class="navbar-brand" href="index.html"><i class="fas fa-paw"></i> ANIMAL SHELTER</a>
             <!-- Navigation Links -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -27,10 +30,10 @@
                         <a class="nav-link" href="about.html"> <i class="fas fa-user-tie"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="add.html"> <i class="fas fa-add"></i> Add</a>
+                        <a class="nav-link" href="add.html"> <i class="fas fa-plus"></i> Add</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html"> <i class="fas fa-contact"></i> Contact Us</a>
+                        <a class="nav-link" href="contact.html"> <i class="fas fa-envelope"></i> Contact Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="list.html"> <i class="fas fa-list"></i> Animal List</a>
@@ -48,7 +51,7 @@
         <h1>Add a New Animal</h1>
         <div class="row justify-content-lg-center">
             <!-- Animal Form -->
-            <form id="animal-form" class="col-lg-6 col-md-4 col-sm-4">
+            <form id="animal-form" class="col-lg-6 col-md-8 col-sm-10">
                 <!-- Animal Name Input -->
                 <div class="input-group mb-3">
                     <span class="input-group-text">Animal Name</span>
@@ -80,7 +83,7 @@
                     <p class="text-danger d-none">This is where the error message will go.</p>
                 </div>
                 <!-- Save Button -->
-                <button type="submit" class="btn btn-primary"><i class="fas fa-envelope"></i> Save Animal</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Animal</button>
             </form>
         </div>
     </div>
@@ -96,7 +99,7 @@
 </footer>
 
 <!-- Scripting Section -->
-<script src="../../node_modules/bootstrap/js/index.esm.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script type="module" src="app/add.js"></script>
 <script type="module" src="app/edit.js"></script>
 
