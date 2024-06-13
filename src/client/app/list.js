@@ -117,7 +117,7 @@ function addDeleteButton(cell, animal) {
         confirmButton.onclick = async () => {
             try {
                 await deleteAnimal(animal.name);
-                location.reload(); // Reload the page after deletion
+                location.reload(); 
             } catch (error) {
                 console.error('Error deleting animal:', error);
                 alert('Failed to delete the animal. Please try again.');

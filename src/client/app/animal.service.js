@@ -18,8 +18,8 @@ export function saveAnimal(animal) {
     const animals = getAnimals();
     // See if this animal already exists
     if (animals.find(a => a.name.toLowerCase() === animal.name.toLowerCase())) {
-        // Tell the caller we are not going to save this
-        return false;
+        // Throw an error if the animal already exists
+        throw new Error('Animal already exists');
     }
     // If it doesn't, add it to the array
     animals.push(animal);
@@ -47,9 +47,9 @@ export function updateAnimal(updatedAnimal) {
     const animals = getAnimals();
     // Find the index of the animal we're trying to update
     const index = animals.findIndex(animal => animal.name.toLowerCase() === updatedAnimal.name.toLowerCase());
-    // If the animal doesn't exist, return false
+    // If the animal doesn't exist, throw an error
     if (index === -1) {
-        return false;
+        throw new Error('Animal not found');
     }
     // Use the index to update the fields for the selected animal
     animals[index] = updatedAnimal;
@@ -67,9 +67,9 @@ export function deleteAnimal(animalName) {
     let animals = getAnimals();
     // Find the index of the animal we're trying to delete
     const index = animals.findIndex(animal => animal.name.toLowerCase() === animalName.toLowerCase());
-    // If the animal doesn't exist, return false
+    // If the animal doesn't exist, throw an error
     if (index === -1) {
-        return false;
+        throw new Error('Animal not found');
     }
     // Cut the selected animal out of the list
     animals.splice(index, 1);
