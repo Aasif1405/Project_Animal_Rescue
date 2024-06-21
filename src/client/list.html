@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="./CSS/style.css">
+
 </head>
 <body>
 <header>
@@ -46,25 +47,21 @@
 </header>
 <main class="container">
     <!-- Background Video -->
-    <video src="img/beach.mp4" muted loop autoplay class="back_video"></video>
+    <video src="./img/beach.mp4" muted loop autoplay class="back_video"></video>
     <!-- Main Content -->
     <div class="container mt-4">
         <h1>Animal List</h1>
-        <!-- Spinner -->
-        <div id="spinner" class="d-flex justify-content-center my-5">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
         <!-- Message Box -->
         <div id="message-box" class="alert alert-danger d-none"></div>
         <!-- Table for Animals List -->
-        <table id="animals-list" class="table table-striped d-none">
+        <table id="animals-list" class="table table-striped">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Species</th>
-                    <th>Age</th>
+                    <th>Breed</th>
+                    <th>Number of Legs</th>
+                    <th>Number of Eyes</th>
+                    <th>Animal Sound</th>
                     <th>Edit & Delete</th>
                 </tr>
             </thead>
@@ -109,6 +106,7 @@
 
 <!-- Scripting Section -->
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script type="module" src="./app/ice9.js"></script>
+<script type="module" src="./app/list.js"></script>
+
 </body>
 </html>

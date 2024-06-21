@@ -82,3 +82,57 @@ export function deleteAnimal(animalName) {
 export function deleteAnimalService(animalName) {
     return deleteAnimal(animalName);
 }
+
+
+// const BASE_URL = 'https://inft2202.paclan.net/api/animals';
+// const API_KEY = 'http://127.0.0.1:5500/inft-2202-ice/src/client/list.html';
+
+// const headers = {
+//     'Content-Type': 'application/json',
+//     'apikey': API_KEY
+// };
+
+// // Helper function to check response status
+// async function checkResponse(response) {
+//     if (!response.ok) {
+//         const error = await response.json();
+//         throw new Error(error.message || 'Unknown error');
+//     }
+//     return response.json();
+// }
+
+// export async function getAnimals(page = 1, perPage = 5) {
+//     const response = await fetch(`${BASE_URL}?page=${page}&perPage=${perPage}`, { headers });
+//     return checkResponse(response);
+// }
+
+// export async function saveAnimal(animal) {
+//     const response = await fetch(BASE_URL, {
+//         method: 'POST',
+//         headers,
+//         body: JSON.stringify(animal)
+//     });
+//     return checkResponse(response);
+// }
+
+// export async function findAnimal(animalName) {
+//     const response = await fetch(`${BASE_URL}/${encodeURIComponent(animalName)}`, { headers });
+//     return checkResponse(response);
+// }
+
+// export async function updateAnimal(updatedAnimal) {
+//     const response = await fetch(`${BASE_URL}/${encodeURIComponent(updatedAnimal.name)}`, {
+//         method: 'PUT',
+//         headers,
+//         body: JSON.stringify(updatedAnimal)
+//     });
+//     return checkResponse(response);
+// }
+
+// export async function deleteAnimal(animalName) {
+//     const response = await fetch(`${BASE_URL}/${encodeURIComponent(animalName)}`, {
+//         method: 'DELETE',
+//         headers
+//     });
+//     return checkResponse(response);
+// }
