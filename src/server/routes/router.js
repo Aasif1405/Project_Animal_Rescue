@@ -4,11 +4,11 @@ import express, { response } from 'express';
 export const router = express.Router();
 
 //  import routes from the sub-router
-import { contentRoutes } from './content.js';
+//import { contentRoutes } from './content.js';
 import { animalRoutes } from './animal.js';
 
 
 // apply the sub-router to the main router
-router.use(contentRoutes);
+//router.use(contentRoutes);
 router.use('/api', animalRoutes);
 
