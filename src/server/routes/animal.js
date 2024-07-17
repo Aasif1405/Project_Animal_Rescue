@@ -22,6 +22,6 @@ animalRoutes.get('/animals/:animalId', AnimalsRetrieveController.handle);
 
 // Update
 
-animalRoutes.get('/animals/:animalId', AnimalsUpdateController.handle);
+animalRoutes.update('/animals/:animalId', AnimalsUpdateController.handle);
 // Delete
 animalRoutes.delete('/animals/:animalId', AnimalsDeleteController.handle);

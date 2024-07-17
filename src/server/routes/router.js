@@ -1,30 +1,14 @@
 import express, { response } from 'express';
+
+//  create and export the router so the server can import it.
 export const router = express.Router();
 
+//  import routes from the sub-router
+import { contentRoutes } from './content.js';
+import { animalRoutes } from './animal.js';
 
-router.get('/', (request, response, next) => {
-    const{url, method} = request;
-    console.log(method, url);
-    const headers = {'Content-type' : 'text/plain'};
-    response.writeHead(200, headers);
-    response.end('home page');
 
-});
+// apply the sub-router to the main router
+router.use(contentRoutes);
+router.use('/api', animalRoutes);
 
-router.get('/about', (request, response, next) => {
-    const{url, method} = request;
-    console.log(method, url);
-    const headers = {'Content-type' : 'text/plain'};
-    response.writeHead(200, headers);
-    response.end('About Me');
-
-});
-
-router.get('/contact', (request, response, next) => {
-    const{url, method} = request;
-    console.log(method, url);
-    const headers = {'Content-type' : 'text/plain'};
-    response.writeHead(200, headers);
-    response.end('Contact Page');
-
-});
