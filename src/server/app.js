@@ -1,7 +1,9 @@
-import express from 'express';
+import express, { request, response } from 'express';
 //import { router } from './routes/router.js';
 //import { animalRoutes } from './routes/animal.js';
 import mongoose from 'mongoose';
+import { LoggingMiddleware } from './middleware/logging.js'
+import { logger } from './utils/logger.js';
 
 const PORT = 3000;
 // 
@@ -9,12 +11,41 @@ const server = express();
 // 
 server.use(express.json());
 
+// tell express the use our new logger
+server.use(LoggingMiddleware);
+
 // 
 server.use(express.static(`${import.meta.dirname}/../client`));
 server.use('/node_modules', express.static(import.meta.dirname + '/../../node_modules'))
 // tell the server to use our imported router 
 //server.use(router);
 // server.use(animalRoutes);
+server.use((error, request, response, next) =>{
+
+  const {message, stack } = error;
+  const {method, originalUrl, headers, query, body, params } = request
+  const context = {
+    time: (new Date().getTime()),
+    stack,
+
+    request: {
+        method,
+        path: originalUrl,
+        body,
+        params,
+        query,
+        headers
+    },
+        response:{
+          body: response.locals.data,
+          statusCode: error.status ?? 500
+
+        }
+      }
+  logger.error(`${error.status ?? 500}: ${message}`, context);
+  response.status (error.status ?? 500).send ({ error: message})
+
+});
 
  try{
      //Connect to the database

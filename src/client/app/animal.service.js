@@ -1,5 +1,5 @@
 const BASE_URL = 'https://inft2202.paclan.net/api/animals';
-const API_KEY = 'http://127.0.0.1:5500/inft-2202-ice/src/client/list.html';
+const API_KEY = '6670ebfa166b62a518b6b1be';
 
 const headers = {
     'Content-Type': 'application/json',

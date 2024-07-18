@@ -1,6 +1,18 @@
 import { response } from 'express';
 import Animal from '../../models/Animal.js';
 
+const rules = checkSchema({
+    page: {
+        isNumeric: true,
+        errormessage: `"page" must be a Number!`
+    },
+    perPage:{
+        isNumeric: true,
+        errormessage: `"page" must be a Number!`
+
+    }
+}, [query]);
+
 const handle = async (request, reponse, next) => {
     try{
 
