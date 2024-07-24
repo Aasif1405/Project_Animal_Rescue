@@ -4,6 +4,7 @@ import express, { request, response } from 'express';
 import mongoose from 'mongoose';
 import { LoggingMiddleware } from './middleware/logging.js'
 import { logger } from './utils/logger.js';
+import { ErrorHandlingMiddleware } from './middleware/errorHandling.js';
 
 const PORT = 3000;
 // 
@@ -16,9 +17,11 @@ server.use(LoggingMiddleware);
 
 // 
 server.use(express.static(`${import.meta.dirname}/../client`));
-server.use('/node_modules', express.static(import.meta.dirname + '/../../node_modules'))
+server.use('/node_modules', express.static(import.meta.dirname + '/../../node_modules'));
+
 // tell the server to use our imported router 
 //server.use(router);
+server.use(ErrorHandlingMiddleware);
 // server.use(animalRoutes);
 server.use((error, request, response, next) =>{
 
