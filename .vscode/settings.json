@@ -4,5 +4,6 @@
         "fortawesome",
         "inft",
         "Sadhak"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

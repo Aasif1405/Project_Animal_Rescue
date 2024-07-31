@@ -16,7 +16,7 @@ server.use(express.json());
 server.use(LoggingMiddleware);
 
 // 
-server.use(express.static(`${import.meta.dirname}/../client`));
+server.use(express.static(`${import.meta.dirname}/../../dist`));
 server.use('/node_modules', express.static(import.meta.dirname + '/../../node_modules'));
 
 // tell the server to use our imported router 
