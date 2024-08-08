@@ -3,6 +3,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import loader from 'sass-loader';
 
 
 const isProduction = process.env.NODE_ENV == 'production';
@@ -24,7 +25,11 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/client_og/index.html',
+            title:'INFT 2202',
+            hash: true,
+            template: './src/client_og/index.ejs',
+            filename: 'index.html',
+            inject: 'body'
         }),
 
         new MiniCssExtractPlugin(),
@@ -63,6 +68,18 @@ const config = {
                     filename: 'img/[name][ext]'
                 }
             },
+            {
+                test: /\.ejs$/,
+                use:{
+                    loader: 'ejs-compiled-loader',
+                    options: {
+                        htmlmin: true,
+                        htmlminOption:{
+                            removeComments:true
+                        }
+                    }
+                }
+            }
 
             // Add your rules for custom modules here
             // Learn more about loaders from https://webpack.js.org/loaders/
