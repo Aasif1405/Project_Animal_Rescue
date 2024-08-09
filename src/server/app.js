@@ -2,6 +2,7 @@ import express, { request, response } from 'express';
 //import { router } from './routes/router.js';
 //import { animalRoutes } from './routes/animal.js';
 import mongoose from 'mongoose';
+import path from 'path';
 import { LoggingMiddleware } from './middleware/logging.js'
 import { logger } from './utils/logger.js';
 import { ErrorHandlingMiddleware } from './middleware/errorHandling.js';
@@ -15,9 +16,15 @@ server.use(express.json());
 // tell express the use our new logger
 server.use(LoggingMiddleware);
 
+
 // 
 server.use(express.static(`${import.meta.dirname}/../../dist`));
+// look in the right spot for any node modules
 server.use('/node_modules', express.static(import.meta.dirname + '/../../node_modules'));
+//  the server is looking for the path
+server.get('*', (request,response,next) => {
+  response.sendFile(path.resolve(import.meta.dirname + '/../../dist/index.html'))
+});
 
 // tell the server to use our imported router 
 //server.use(router);

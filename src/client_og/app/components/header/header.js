@@ -4,6 +4,6 @@ export default async () => {
 
     const strHeader = tmplHeader();
 
-    document.getElementById('app').insertAdjacentHTML("afterbegin", strHeader);
+    document.getElementById('app').insertAdjacentHTML("beforebegin", strHeader);
 
 }
