@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Aasif1405/inft-2202-ice#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.5.2",
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "bootstrap": "^5.3.3",
     "ejs": "^3.1.10",
     "express": "^4.19.2",

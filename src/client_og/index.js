@@ -1,5 +1,6 @@
 import Navigo from 'navigo';
 import 'bootstrap';
+import '@fortawesome/fontawesome-free';
 import './scss/styles.scss';
 
 import HeaderComponent from './app/components/header/header.js';
@@ -22,6 +23,17 @@ window.addEventListener('load', () => {
     router
     .on('/', HomeComponent)
     .on('/about', AboutComponent)
+    .on('/contact', ContactComponent)
+    .on('./add', AddComponent)
     .resolve();
+
+    // listen to all clicks
+    document.addEventListener('click', event =>{
+        // if there's a route attribute, do some internal routing
+        if (event.target.attributes['route']){
+            event.preventDefault();
+            router.navigate(event.target.attributes['routes'].value);
+        }
+    });
 
 });
