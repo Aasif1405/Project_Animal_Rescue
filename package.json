@@ -1,5 +1,5 @@
 {
-  "name": "inft-2202-ice",
+  "name": "Project Animal Rescue",
   "version": "1.0.0",
   "description": "IN CLASS EXERCISES",
   "type": "module",
@@ -14,14 +14,14 @@
     "serve": "webpack serve"
   },
   "repository": {
-    "url": "git+https://github.com/Aasif1405/inft-2202-ice.git"
+    "url": "git+https://github.com/Aasif1405/Project_Animal_Rescue.git"
   },
   "author": "Mohammed Aasif Mohammed Sadhak",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Aasif1405/inft-2202-ice/issues"
+    "url": "https://github.com/Aasif1405/Project_Animal_Rescue/issues"
   },
-  "homepage": "https://github.com/Aasif1405/inft-2202-ice#readme",
+  "homepage": "https://github.com/Aasif1405/Project_Animal_Rescue#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
     "bootstrap": "^5.3.3",
